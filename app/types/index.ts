@@ -8,6 +8,6 @@ export interface CustomButtonProps {
 }
 
 export interface SearchManufacturerProps {
-    manufactuer : string;
+    manufacturer : string;
     setManufacturer : (manufacturer : string) => void;
 }
