@@ -5,6 +5,7 @@ import { Combobox , Transition } from '@headlessui/react';
 
 import { SearchManufacturerProps } from '@/app/types';
 import { manufacturers } from '@/constants';
+import { CheckIcon } from "@heroicons/react/20/solid";
 
 import Image from 'next/image'
 
@@ -82,7 +83,28 @@ const SearchManufacturer = ({
                                         }
                                         value={item}
                                         >
-                                            {item}
+                                            {
+                                                ({selected , active}) => ( 
+                                                    <>
+                                                        <span
+                                                        className={`block truncate ${
+                                                            selected ? 'font-medium' : 'font-normal'
+                                                        }`}
+                                                        >
+                                                        {item}
+                                                        </span>
+                                                        {selected ? (
+                                                        <span
+                                                            className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+                                                            active ? 'text-white' : 'text-teal-600'
+                                                            }`}
+                                                        >
+                                                            <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                                                        </span>
+                                                        ) : null}
+                                                    </>
+                                                )
+                                            }
                                         </Combobox.Option>
                                     ))
                              )
