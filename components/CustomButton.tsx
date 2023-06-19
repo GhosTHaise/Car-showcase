@@ -1,6 +1,6 @@
 "use client"
 
-import { CustomButtonProps } from "@/app/types"
+import { CustomButtonProps } from "@/types"
 import Image from "next/image"
 
 const CustomButton = ({title,containerStyles,handleClick,btnType} : CustomButtonProps) => {

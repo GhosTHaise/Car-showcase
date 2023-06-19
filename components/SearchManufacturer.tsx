@@ -3,7 +3,7 @@
 import { useState, Fragment } from 'react';
 import { Combobox , Transition } from '@headlessui/react';
 
-import { SearchManufacturerProps } from '@/app/types';
+import { SearchManufacturerProps } from '@/types';
 import { manufacturers } from '@/constants';
 import { CheckIcon } from "@heroicons/react/20/solid";
 
