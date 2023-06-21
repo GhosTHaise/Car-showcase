@@ -5,6 +5,7 @@ import Image from 'next/image';
 import {CarProps} from "../types";
 import { calculateCarRent } from '@/utils';
 import CustomButton from './CustomButton';
+import CardDetails from './CardDetails';
 
 interface CarCardProps {
     car : CarProps
@@ -106,6 +107,8 @@ const CarCard = ({ car } : CarCardProps) => {
                 />
             </div>
         </div>
+
+        <CardDetails />
     </div>
   )
 }
