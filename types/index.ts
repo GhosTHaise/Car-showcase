@@ -17,16 +17,16 @@ export interface SearchManufacturerProps {
 
 export interface CarProps {
     city_mpg : number;
-    class : String;
+    class : string;
     combination_mpg : number;
     cylinders : number;
     displacement : number;
-    drive : String;
-    fuel_type : String;
+    drive : string;
+    fuel_type : string;
     highway_mpg : number;
-    make : String;
-    model :String;
-    transmission :String;
+    make : string;
+    model :string;
+    transmission :string;
     year : number;
 }
 

@@ -47,7 +47,7 @@ const CardDetails = (
                                     <Dialog.Panel 
                                       className="relative w-full max-w-lg max-h-[90vh]
                                        overlflow-y-auto transform rounded-2xl bg-white p-6
-                                       text-left shadow-xsl transition-all flex flex-col gap-5
+                                       text-left shadow-xl transition-all flex flex-col gap-5
                                        ">
                                         <button
                                           type='button'
