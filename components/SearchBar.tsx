@@ -20,7 +20,7 @@ const SearchButton = ({ otherClasses }: {otherClasses? : string }  ) => (
    </button>
 );
 const SearchBar = () => {
-
+  const [model, setModel] = useState("");
   const [manufacturer, setManufacturer] = useState('');
   const handleSearch = () => {
 
@@ -40,6 +40,25 @@ const SearchBar = () => {
 
           <SearchButton otherClasses="sm:hidden" />
       </div>
+      <div className="searchbar__item">
+        <Image
+          src="/model-icon.png"
+          alt="model-car"
+          width={25}
+          height={25}
+          className="absolute w-[20px] h-[20px] ml-4"
+        />
+        <input 
+          type="text"
+          name="model"
+          value={model}
+          onChange={(e) => setModel(e.target.value)}
+          placeholder="Tiguan"
+          className="searchbar__input"
+          />
+          <SearchButton otherClasses="sm:hidden" />
+      </div>
+      <SearchButton otherClasses="max-sm:hidden" />
     </form>
   )
 }
