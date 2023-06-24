@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import React , { useState } from "react"
 
 import { SearchManufacturer } from "."
 import Image from "next/image";
@@ -22,8 +22,13 @@ const SearchButton = ({ otherClasses }: {otherClasses? : string }  ) => (
 const SearchBar = () => {
   const [model, setModel] = useState("");
   const [manufacturer, setManufacturer] = useState('');
-  const handleSearch = () => {
 
+  const handleSearch = (e : React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if(manufacturer === "" && model === "") {
+      return alert("Please fill in the search bar !");
+    }
   }
 
 
