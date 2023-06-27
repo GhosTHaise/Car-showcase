@@ -52,7 +52,8 @@ export default async function Home({ searchParams} : {searchParams  : FilterProp
                     }
                   </div>
                   <ShowMore 
-                    
+                    pageNumber={(searchParams.limit || 10) / 10}
+                    isNext={(searchParams.limit || 10) > allCars.length}
                   />
               </section>
             )

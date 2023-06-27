@@ -42,7 +42,6 @@ export interface FilterProps{
     fuel : string;
     limit : number;
     model : string;
-    pageNumber? : number;
 }
 export interface OptionProps{
     title : string;
