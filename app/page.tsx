@@ -1,4 +1,4 @@
-import { CustomFilter, Hero, SearchBar,CarCard } from '@/components'
+import { CustomFilter, Hero, SearchBar,CarCard, ShowMore } from '@/components'
 import { FilterProps } from '@/types';
 import { fetchCars } from '@/utils'
 import Image from 'next/image'
@@ -51,6 +51,9 @@ export default async function Home({ searchParams} : {searchParams  : FilterProp
                         (car) => <CarCard  car={car}/>)
                     }
                   </div>
+                  <ShowMore 
+                    
+                  />
               </section>
             )
             :
