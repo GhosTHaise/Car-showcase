@@ -1,18 +1,53 @@
+"use client"
+
+import { useState,useEffect } from 'react';
 import { CustomFilter, Hero, SearchBar,CarCard, ShowMore } from '@/components'
 import { FilterProps } from '@/types';
 import { fetchCars } from '@/utils'
 import Image from 'next/image'
 import { fuels, yearsOfProduction } from '@/constants';
 
-export default async function Home({ searchParams} : {searchParams  : FilterProps}) {
-  const allCars = await fetchCars({
-    manufacturer : searchParams.manufacturer || '',
-    year : searchParams.year || 2022,
-    fuel : searchParams.fuel || '',
-    limit : searchParams.limit || 10,
-    model : searchParams.model || ''
-  });
+export default function Home(
+  //{ searchParams} : {searchParams  : FilterProps}
+  ) {
+  const [allCars, setAllCars] = useState([]);
+  const [loading, setLoading] = useState(false);
 
+  //search States
+  const [manufacturer, setManufacturer] = useState("");
+  const [model, setModel] = useState("");
+
+  //filter states
+  const [fuel, setFuel] = useState("");
+  const [year, setYear] = useState(2022);
+
+  //pagination States
+  const [limit, setLimit] = useState(10);
+
+  const getCars = async () => {
+    setLoading(true);
+
+    try {
+      const result = await fetchCars({
+        manufacturer : manufacturer || '',
+        year : year || 2022,
+        fuel : fuel || '',
+        limit : limit || 10,
+        model : model || ''
+      });
+  
+      setAllCars(result);
+    } catch (error) {
+      
+    }finally{
+      setLoading(false);
+    }
+  }
+  useEffect(() => {
+    getCars()
+  }, [fuel,year,limit,manufacturer,model]);
+  
+  
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
   
   return (
@@ -52,8 +87,8 @@ export default async function Home({ searchParams} : {searchParams  : FilterProp
                     }
                   </div>
                   <ShowMore 
-                    pageNumber={(searchParams.limit || 10) / 10}
-                    isNext={(searchParams.limit || 10) > allCars.length}
+                    pageNumber={(limit || 10) / 10}
+                    isNext={(limit || 10) > allCars.length}
                   />
               </section>
             )
