@@ -68,16 +68,27 @@ export default function Home(
             </div>
 
           <div className='home__filters'>
-              <SearchBar />
+              <SearchBar
+                setManufacturer={setManufacturer}
+                setModel={setModel}
+              />
 
               <div className='home__filter-container'>
-                  <CustomFilter title="fuel" options={fuels} />
-                  <CustomFilter title="year" options={yearsOfProduction} />
+                  <CustomFilter 
+                    title="fuel" 
+                    options={fuels}
+                    setFilter={setFuel}
+                    />
+                  <CustomFilter 
+                    title="year" 
+                    options={yearsOfProduction}
+                    setFilter={setYear}
+                    />
               </div>
           </div>
 
           {
-            !isDataEmpty ? 
+            allCars.length > 0 ? 
             (
               <section>
                   <div className='home__cars-wrapper'>
@@ -86,9 +97,24 @@ export default function Home(
                         (car) => <CarCard  car={car}/>)
                     }
                   </div>
+                  {
+                    loading &&
+                    (
+                      <div className='mt-16 w-full flex-center'>
+                          <Image 
+                            src="/loader.svg"
+                            alt="loader"
+                            width={50}
+                            height={50}
+                            className="object-contain"
+                          />
+                      </div>
+                    )
+                  }
                   <ShowMore 
-                    pageNumber={(limit || 10) / 10}
-                    isNext={(limit || 10) > allCars.length}
+                    pageNumber={(limit) / 10}
+                    isNext={(limit) > allCars.length}
+                    setLimit={setLimit}
                   />
               </section>
             )

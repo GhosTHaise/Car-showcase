@@ -10,7 +10,7 @@ import { CheckIcon } from "@heroicons/react/20/solid";
 import Image from 'next/image'
 
 const SearchManufacturer = ({
-    manufacturer,setManufacturer
+    selected,setSelected
 } : SearchManufacturerProps) => {
 
   const [query, setQuery] = useState("");
@@ -27,8 +27,8 @@ const SearchManufacturer = ({
   return (
     <div className='search-manufacturer'>
         <Combobox
-            value={manufacturer}
-            onChange={setManufacturer}
+            value={selected}
+            onChange={setSelected}
         >
             <div className='relative w-full'>
                 <Combobox.Button
